@@ -3,6 +3,7 @@ from Controllers.TaskController import TaskController
 from Models.TaskModel import TaskModel, Base
 from Repositories.TaskRepository import TaskRepository
 from Repositories.Connection import Connection
+from Utils.Config import Config
 import logging as logger
 from Utils import LoggerUtility
 logger = LoggerUtility.setup_logger('Flask')    
@@ -10,6 +11,7 @@ logger = LoggerUtility.setup_logger('Flask')
 class DI:
     def __init__(self):
         self.init_app()
+        self.read_config()
         self.init_models()
         self.establish_db_connection()
         self.create_db_schema()
@@ -20,12 +22,15 @@ class DI:
         self.app = Flask(__name__, template_folder='views/templates', static_folder='views/static')
         logger.info(f'Flask App created')
 
+    def read_config(self):
+        self.database_connection_string = Config().database_connection_string        
+
     def init_models(self):
         self.TaskModel = TaskModel()
         logger.info(f'Models initiated')
         
     def establish_db_connection(self):
-        self.connection = Connection()
+        self.connection = Connection(self.database_connection_string)
         logger.info(f'Database Connection created at {self.connection.engine.url}')
 
     def create_db_schema(self):
