@@ -1,1 +1,3 @@
 *.pyc
+Archive/*
+Services/*

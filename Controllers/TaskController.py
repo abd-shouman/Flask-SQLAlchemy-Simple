@@ -1,10 +1,5 @@
-# import logging as logger 
 from Utils import LoggerUtility
 logger = LoggerUtility.setup_logger('Flask')
-# from Utils import LoggerFactory
-# logger = LoggerFactory.create(name='Flask')
-
-# import logging as logger
 
 from .BaseController import BaseController
 from Repositories.TaskRepository import TaskRepository

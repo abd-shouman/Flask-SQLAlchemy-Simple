@@ -20,8 +20,7 @@ Mainly SQLAlchemy Declarative mapping (as opposed to Imperative mapping)
 
 - [ ] Add addtional models
     - [ ] Explore 1-* relationship between model
-
-- [x] Completed task title  
+- [ ] Test Flask Commands
 
 ## Run the app
 Entry point: App.py
